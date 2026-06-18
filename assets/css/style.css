@@ -187,6 +187,31 @@ h1, h2, h3, h4 {
 
 .mobile-toggle { display: none; }
 
+/* Mobile nav open state — controlled by JS adding .nav-open class */
+@media (max-width: 760px) {
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: 64px;
+    left: 0; right: 0;
+    background: var(--cream-soft);
+    border-bottom: 2px solid var(--sage);
+    padding: 1.5rem 2rem 2rem;
+    flex-direction: column;
+    gap: 1.4rem;
+    z-index: 99;
+    box-shadow: 0 8px 24px rgba(15,56,22,0.1);
+  }
+  .nav-links.nav-open {
+    display: flex;
+  }
+  .nav-links a {
+    font-size: 1.1rem;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid var(--sage);
+  }
+}
+
 /* ============ HERO ============ */
 .hero {
   position: relative;
