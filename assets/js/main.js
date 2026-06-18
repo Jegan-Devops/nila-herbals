@@ -1,68 +1,96 @@
 // ============ MOBILE NAV TOGGLE ============
 const mobileToggle = document.querySelector('.mobile-toggle');
 const navLinks = document.querySelector('.nav-links');
+let navOpen = false;
+
+function closeNav() {
+  navOpen = false;
+  navLinks.classList.remove('nav-open');
+  mobileToggle.setAttribute('aria-expanded', 'false');
+}
+
+function openNav() {
+  navOpen = true;
+  navLinks.classList.add('nav-open');
+  mobileToggle.setAttribute('aria-expanded', 'true');
+}
 
 if (mobileToggle && navLinks) {
   mobileToggle.addEventListener('click', () => {
-    const isOpen = navLinks.style.display === 'flex';
-    navLinks.style.display = isOpen ? 'none' : 'flex';
-    navLinks.style.flexDirection = 'column';
-    navLinks.style.position = 'absolute';
-    navLinks.style.top = '70px';
-    navLinks.style.left = '0';
-    navLinks.style.right = '0';
-    navLinks.style.background = 'var(--cream)';
-    navLinks.style.padding = '1.5rem 2rem';
-    navLinks.style.gap = '1.2rem';
-    navLinks.style.borderBottom = '1px solid var(--sage)';
-    navLinks.style.zIndex = '99';
+    navOpen ? closeNav() : openNav();
   });
 
-  // Close nav when a link is clicked
+  // Close when any link is clicked
   navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.style.display = 'none';
-    });
+    link.addEventListener('click', closeNav);
+  });
+
+  // Close on outside click
+  document.addEventListener('click', (e) => {
+    if (navOpen && !e.target.closest('.nav-wrap')) closeNav();
   });
 }
 
-// ============ NEWSLETTER FORM ============
+// ============ NEWSLETTER FORM (Netlify Forms) ============
 const newsletterForm = document.getElementById('newsletter-form');
 if (newsletterForm) {
-  newsletterForm.addEventListener('submit', (e) => {
+  newsletterForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const email = newsletterForm.querySelector('input[type="email"]').value;
-    const btn = newsletterForm.querySelector('button');
-    btn.textContent = 'Subscribed ✓';
-    btn.style.background = '#25D366';
-    newsletterForm.querySelector('input').value = '';
-    setTimeout(() => {
-      btn.textContent = 'Subscribe';
-      btn.style.background = '';
-    }, 3000);
-    // TODO: connect to Netlify Forms or email provider later
-    console.log('Newsletter signup:', email);
+    const btn = newsletterForm.querySelector('button[type="submit"]');
+    const emailInput = newsletterForm.querySelector('input[type="email"]');
+    const formData = new FormData(newsletterForm);
+
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    try {
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString(),
+      });
+
+      if (response.ok) {
+        btn.textContent = 'Subscribed ✓';
+        btn.style.background = '#25D366';
+        emailInput.value = '';
+        setTimeout(() => {
+          btn.textContent = 'Subscribe';
+          btn.style.background = '';
+          btn.disabled = false;
+        }, 4000);
+      } else {
+        throw new Error('Form submit failed');
+      }
+    } catch (err) {
+      btn.textContent = 'Try again';
+      btn.disabled = false;
+      console.error('Newsletter form error:', err);
+    }
   });
 }
 
-// ============ SCROLL REVEAL (lightweight, no library) ============
-const revealEls = document.querySelectorAll('.product-card, .why-card, .testimonial-card, .ingredient-badge');
+// ============ SCROLL REVEAL (no library needed) ============
+if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const revealEls = document.querySelectorAll('.product-card, .why-card, .testimonial-card, .ingredient-badge');
 
-if ('IntersectionObserver' in window) {
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+    entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
+        // Stagger cards slightly
+        setTimeout(() => {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }, i * 60);
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.08 });
 
   revealEls.forEach(el => {
     el.style.opacity = '0';
-    el.style.transform = 'translateY(24px)';
-    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    el.style.transform = 'translateY(28px)';
+    el.style.transition = 'opacity 0.55s ease, transform 0.55s ease';
     observer.observe(el);
   });
 }
