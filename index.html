@@ -289,9 +289,22 @@
   </div>
 </section>
 
-<!-- Instagram strip removed for now — was showing duplicated placeholder product
-     images, not real posts. Add back once you have actual Instagram post
-     screenshots to feature. See note in chat. -->
+<!-- ============ RECENT TIPS / INSTAGRAM STRIP — pulls live from tips-data.json ============ -->
+<section class="instagram-strip">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Follow Us</span>
+      <h2><span data-nila="insta-text">@nila_herbal_care_official</span> on Instagram</h2>
+      <p>Daily hair & skin care tips — tag us in your Nila moments, we'd love to share your story.</p>
+    </div>
+    <div class="insta-grid" id="insta-grid">
+      <!-- Cards injected by JS below, sourced from tips-data.json -->
+    </div>
+    <div style="text-align:center; margin-top: var(--space-md);">
+      <a href="#" data-nila="instagram" class="btn btn-outline" target="_blank" rel="noopener">Follow on Instagram</a>
+    </div>
+  </div>
+</section>
 
 <!-- ============ TESTIMONIALS ============ -->
 <section id="reviews">
@@ -427,5 +440,23 @@
 
 <script src="assets/js/config.js"></script>
 <script src="assets/js/main.js"></script>
+<script>
+  // Populate homepage "Follow Us" strip with real tip images — single source
+  // of truth is tips-data.json, same file used on tips.html. Shows the 5
+  // most recent tips so this section is never fake/duplicated content.
+  fetch('tips-data.json')
+    .then(res => res.json())
+    .then(tips => {
+      const grid = document.getElementById('insta-grid');
+      if (!grid) return;
+      const recent = tips.slice(0, 5);
+      grid.innerHTML = recent.map(tip => `
+        <a href="tips.html" class="insta-thumb" title="${tip.day}: ${tip.heading}">
+          <img src="${tip.image}" alt="${tip.heading}" loading="lazy">
+        </a>
+      `).join('');
+    })
+    .catch(err => console.error('Could not load tips for homepage strip:', err));
+</script>
 </body>
 </html>
