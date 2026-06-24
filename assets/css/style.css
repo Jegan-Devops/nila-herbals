@@ -722,19 +722,17 @@ section { padding: var(--space-lg) 0; }
 }
 .insta-thumb {
   aspect-ratio: 1;
-  background: var(--sage);
+  background: var(--cream-soft);
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
-  color: var(--forest);
   overflow: hidden;
   cursor: pointer;
-  transition: opacity 0.2s;
+  transition: opacity 0.2s, transform 0.2s;
 }
-.insta-thumb:hover { opacity: 0.8; }
-.insta-thumb img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; }
+.insta-thumb:hover { opacity: 0.85; transform: translateY(-3px); }
+.insta-thumb img { width: 100%; height: 100%; object-fit: contain; border-radius: 12px; }
 
 /* Sticky add to cart bar (future use, hidden now) */
 .sticky-bar {
