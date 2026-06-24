@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nila-herbals.netlify.app/sitemap.xml

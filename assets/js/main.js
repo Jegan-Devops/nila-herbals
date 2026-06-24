@@ -94,3 +94,33 @@ if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-mot
     observer.observe(el);
   });
 }
+
+// ============ LIGHTBOX — click any product or tip image to view full size ============
+(function setupLightbox() {
+  const overlay = document.createElement('div');
+  overlay.className = 'lightbox-overlay';
+  overlay.innerHTML = `<button class="lightbox-close" aria-label="Close">&times;</button><img src="" alt="">`;
+  document.body.appendChild(overlay);
+
+  const overlayImg = overlay.querySelector('img');
+
+  function openLightbox(src, alt) {
+    overlayImg.src = src;
+    overlayImg.alt = alt || '';
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  overlay.addEventListener('click', closeLightbox);
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+
+  // Delegate clicks from product images and tip images (tip cards render dynamically, so use delegation)
+  document.addEventListener('click', (e) => {
+    const img = e.target.closest('.product-img-wrap img, .tip-img-wrap img');
+    if (img) openLightbox(img.src, img.alt);
+  });
+})();
