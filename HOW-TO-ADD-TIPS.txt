@@ -1,0 +1,78 @@
+HOW TO ADD A NEW DAILY TIP — NO CODING NEEDED
+================================================
+
+You need TWO things for every new tip:
+1. The image
+2. The text content
+
+------------------------------------------------
+STEP 1 — Upload the image
+------------------------------------------------
+Go to GitHub → assets/images/tips/ folder
+Click "Add file" → "Upload files"
+Upload your image and name it exactly like this pattern:
+
+  day6.jpeg   (for Day 6)
+  day7.jpeg   (for Day 7)
+  day8.jpeg   (for Day 8)
+
+...and so on. Always lowercase "day", no spaces, followed by the number.
+
+------------------------------------------------
+STEP 2 — Add the text content
+------------------------------------------------
+Open the file called: tips-data.json
+
+Copy this whole block (including the { and } curly brackets):
+
+  {
+    "day": "Day 6",
+    "category": "hair",
+    "image": "assets/images/tips/day6.jpeg",
+    "heading": "Your short tip title here",
+    "text": "Your full tip description here."
+  },
+
+Paste it at the very TOP of the list (right after the first [ bracket).
+
+Then just change:
+  - "Day 6"           → change the number to match your day
+  - "day6.jpeg"        → change to match the image filename you uploaded
+  - "heading"          → short title, like a headline
+  - "text"             → the full tip description
+
+For "category" — choose ONE of these three words exactly:
+  hair       (for hair care tips)
+  skin       (for skin care tips)
+  wellness   (for nutrition, water, lifestyle tips)
+
+------------------------------------------------
+IMPORTANT RULES
+------------------------------------------------
+- Don't remove any commas (,) or quote marks (")
+- Always add new tips at the TOP of the list, not bottom
+- Don't forget the comma at the end of each block except possibly the very
+  last one in the file
+- After editing, just click "Commit changes" on GitHub — that's it!
+
+------------------------------------------------
+EXAMPLE — Adding Day 6 (skin tip)
+------------------------------------------------
+
+[
+  {
+    "day": "Day 6",
+    "category": "skin",
+    "image": "assets/images/tips/day6.jpeg",
+    "heading": "Don't skip moisturizer after bathing",
+    "text": "Applying a natural moisturizer right after your bath locks in hydration and keeps skin soft through the day."
+  },
+  {
+    "day": "Day 5",
+    "category": "hair",
+    "image": "assets/images/tips/day5.jpeg",
+    ... (rest stays the same, don't touch)
+  }
+]
+
+That's the whole process. No HTML, no code — just text and an image.

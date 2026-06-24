@@ -101,61 +101,12 @@
 
     <!--
       ============================================================
-      TO ADD A NEW TIP: copy one .tip-card block below and edit it.
-      data-cat must be one of: hair / skin / wellness
-      Newest tips should go at the TOP of this grid.
+      Tip cards load automatically from tips-data.json — see
+      HOW-TO-ADD-TIPS.txt for the no-code way to add new tips.
       ============================================================
     -->
     <div class="tips-grid" id="tips-grid">
-
-      <div class="tip-card" data-cat="hair">
-        <div class="tip-img-wrap">
-          <span class="tip-category">Hair Care</span>
-          <img src="assets/images/tips/day5.jpeg" alt="Use a wide-tooth comb hair tip">
-        </div>
-        <div class="tip-body">
-          <span class="tip-date">Day 5</span>
-          <h3>Use a wide-tooth comb</h3>
-          <p>Using a wide-tooth comb helps gently detangle your hair and reduces unnecessary breakage. Start combing from the ends, work your way up slowly, and be gentle with wet or tangled hair.</p>
-        </div>
-      </div>
-
-      <div class="tip-card" data-cat="hair">
-        <div class="tip-img-wrap">
-          <span class="tip-category">Hair Care</span>
-          <img src="assets/images/Hair_Oil.jpeg" alt="Hair oil massage tip">
-        </div>
-        <div class="tip-body">
-          <span class="tip-date">June 23, 2026</span>
-          <h3>Warm your oil before applying</h3>
-          <p>Gently warming hair oil before massage helps it absorb deeper into the scalp and improves circulation to hair roots.</p>
-        </div>
-      </div>
-
-      <div class="tip-card" data-cat="skin">
-        <div class="tip-img-wrap">
-          <span class="tip-category">Skin Care</span>
-          <img src="assets/images/Bathing_Care.jpeg" alt="Herbal bath powder tip">
-        </div>
-        <div class="tip-body">
-          <span class="tip-date">June 22, 2026</span>
-          <h3>Mix bath powder with rose water</h3>
-          <p>Instead of plain water, try mixing your herbal bathing powder with rose water for an extra glow boost before festivals or events.</p>
-        </div>
-      </div>
-
-      <div class="tip-card" data-cat="hair">
-        <div class="tip-img-wrap">
-          <span class="tip-category">Hair Care</span>
-          <img src="assets/images/CurryLeaf_HairOil.jpeg" alt="Curry leaf hair tip">
-        </div>
-        <div class="tip-body">
-          <span class="tip-date">June 21, 2026</span>
-          <h3>Curry leaf oil works best overnight</h3>
-          <p>For stubborn hair fall, apply curry leaf oil before bed and wash off in the morning — overnight application gives the herbs more time to work.</p>
-        </div>
-      </div>
-
+      <p style="text-align:center; grid-column: 1/-1; color: var(--ink-soft);">Loading tips...</p>
     </div>
   </div>
 </section>
@@ -188,17 +139,50 @@
 <script src="assets/js/config.js"></script>
 <script src="assets/js/main.js"></script>
 <script>
-  // Simple tip category filter — no framework needed
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const tipCards = document.querySelectorAll('.tip-card');
-  filterBtns.forEach(btn => {
+  const categoryLabels = { hair: 'Hair Care', skin: 'Skin Care', wellness: 'Wellness' };
+  const tipsGrid = document.getElementById('tips-grid');
+  let allTips = [];
+
+  function renderTips(filter) {
+    const list = filter === 'all' ? allTips : allTips.filter(t => t.category === filter);
+    if (list.length === 0) {
+      tipsGrid.innerHTML = '<p style="text-align:center; grid-column: 1/-1; color: var(--ink-soft);">No tips in this category yet — check back soon!</p>';
+      return;
+    }
+    tipsGrid.innerHTML = list.map(tip => `
+      <div class="tip-card">
+        <div class="tip-img-wrap">
+          <span class="tip-category">${categoryLabels[tip.category] || tip.category}</span>
+          <img src="${tip.image}" alt="${tip.heading}" loading="lazy">
+        </div>
+        <div class="tip-body">
+          <span class="tip-date">${tip.day}</span>
+          <h3>${tip.heading}</h3>
+          <p>${tip.text}</p>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  fetch('tips-data.json')
+    .then(res => {
+      if (!res.ok) throw new Error('Could not load tips');
+      return res.json();
+    })
+    .then(data => {
+      allTips = data;
+      renderTips('all');
+    })
+    .catch(err => {
+      console.error('Tips load error:', err);
+      tipsGrid.innerHTML = '<p style="text-align:center; grid-column: 1/-1; color: var(--ink-soft);">Tips are loading — please refresh in a moment.</p>';
+    });
+
+  document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      const filter = btn.dataset.filter;
-      tipCards.forEach(card => {
-        card.style.display = (filter === 'all' || card.dataset.cat === filter) ? '' : 'none';
-      });
+      renderTips(btn.dataset.filter);
     });
   });
 </script>
