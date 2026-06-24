@@ -580,3 +580,222 @@ section { padding: var(--space-lg) 0; }
   .ingredient-badge { width: 80px; }
   .ingredient-circle { width: 64px; height: 64px; font-size: 1.5rem; }
 }
+/* ============ PREMIUM UPGRADES ============ */
+
+/* Announcement bar */
+.announce-bar {
+  background: var(--forest);
+  color: var(--cream);
+  text-align: center;
+  padding: 0.55rem 1rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+}
+.announce-bar a { color: var(--gold-light); text-decoration: underline; }
+
+/* Richer hero */
+.hero {
+  background:
+    radial-gradient(ellipse 60% 50% at 80% 50%, rgba(226,234,197,0.35) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 10% 80%, rgba(15,56,22,0.06) 0%, transparent 60%),
+    var(--cream);
+}
+
+.hero-copy h1 { letter-spacing: -0.02em; }
+
+/* Floating stats strip */
+.hero-stats {
+  display: flex;
+  gap: 0;
+  margin-top: var(--space-lg);
+  background: var(--white);
+  border-radius: 16px;
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+  max-width: 480px;
+}
+.stat-item {
+  flex: 1;
+  text-align: center;
+  padding: 1rem 0.5rem;
+  border-right: 1px solid var(--sage);
+  position: relative;
+}
+.stat-item:last-child { border-right: none; }
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--forest);
+  display: block;
+  line-height: 1;
+}
+.stat-label {
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 0.3rem;
+  display: block;
+}
+
+/* Product cards — elevated */
+.product-card { position: relative; }
+.product-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  transition: border-color 0.3s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+.product-card:hover::before { border-color: var(--gold-light); }
+
+/* Ingredients — richer layout */
+.ingredients-section {
+  background: linear-gradient(135deg, var(--sage) 0%, #d4deb0 100%);
+}
+.ingredient-circle {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.ingredient-badge:hover .ingredient-circle {
+  transform: scale(1.1) translateY(-4px);
+  box-shadow: var(--shadow-lift);
+}
+
+/* How to use — new section */
+.how-to-section { background: var(--forest); padding: var(--space-lg) 0; }
+.how-to-section .section-head h2 { color: var(--cream); }
+.how-to-section .section-head p { color: var(--sage); }
+.how-to-section .eyebrow { color: var(--gold-light); }
+.how-to-section .eyebrow::before,
+.how-to-section .eyebrow::after { background: var(--gold-light); }
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  position: relative;
+}
+.steps-grid::before {
+  content: '';
+  position: absolute;
+  top: 44px;
+  left: 16%;
+  right: 16%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+.step-card {
+  text-align: center;
+  padding: var(--space-md);
+  position: relative;
+}
+.step-num {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto var(--space-sm);
+  position: relative;
+  z-index: 1;
+}
+.step-card h3 { color: var(--cream); font-size: 1.1rem; margin-bottom: 0.4rem; }
+.step-card p { color: var(--sage); font-size: 0.9rem; }
+
+/* Instagram strip placeholder */
+.instagram-strip { padding: var(--space-lg) 0; background: var(--cream-soft); }
+.insta-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.5rem;
+}
+.insta-thumb {
+  aspect-ratio: 1;
+  background: var(--sage);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: var(--forest);
+  overflow: hidden;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.insta-thumb:hover { opacity: 0.8; }
+.insta-thumb img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; }
+
+/* Sticky add to cart bar (future use, hidden now) */
+.sticky-bar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: var(--white);
+  border-top: 1px solid var(--sage);
+  padding: 0.8rem var(--space-md);
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 150;
+  box-shadow: 0 -4px 16px rgba(15,56,22,0.08);
+}
+
+/* Testimonial upgrade — verified badge */
+.testimonial-card { position: relative; }
+.verified-badge {
+  position: absolute;
+  top: var(--space-sm); right: var(--space-sm);
+  background: var(--sage);
+  color: var(--forest);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  border-radius: 100px;
+  letter-spacing: 0.05em;
+}
+
+/* CTA band upgrade */
+.cta-band {
+  background: linear-gradient(135deg, var(--forest-deep) 0%, var(--forest) 60%, #1a4f24 100%);
+}
+
+/* Policy links bar */
+.policy-bar {
+  background: var(--sage);
+  padding: var(--space-sm) 0;
+}
+.policy-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+.policy-links a {
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 600;
+}
+.policy-links a:hover { color: var(--forest); }
+.policy-links svg { width: 16px; height: 16px; color: var(--gold); }
+
+/* Responsive extras */
+@media (max-width: 980px) {
+  .steps-grid { grid-template-columns: 1fr; }
+  .steps-grid::before { display: none; }
+  .insta-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 760px) {
+  .hero-stats { flex-wrap: wrap; }
+  .stat-item { flex: 1 1 33%; }
+  .insta-grid { grid-template-columns: repeat(2, 1fr); }
+}
