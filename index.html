@@ -22,7 +22,7 @@
 
 <!-- Announcement bar -->
 <div class="announce-bar">
-  🌿 Free delivery on orders above ₹499 &nbsp;·&nbsp; <a href="https://wa.me/917904833225">Order on WhatsApp</a> &nbsp;·&nbsp; 100% Natural · Chemical Free
+  🌿 Free delivery on orders above ₹499 &nbsp;·&nbsp; <a href="#" data-nila="whatsapp">Order on WhatsApp</a> &nbsp;·&nbsp; 100% Natural · Chemical Free
 </div>
 
 <!-- ============ HEADER ============ -->
@@ -35,9 +35,9 @@
     <nav class="nav-links">
       <a href="#products">Shop</a>
       <a href="#why">Our Story</a>
-      <a href="#ingredients">Ingredients</a>
+      <a href="tips.html">Tips</a>
       <a href="#reviews">Reviews</a>
-      <a href="#footer">Contact</a>
+      <a href="contact.html">Contact</a>
     </nav>
     <div class="nav-actions">
       <a href="#" class="icon-btn" aria-label="Search">
@@ -49,7 +49,7 @@
       <a href="#" class="icon-btn" aria-label="Cart">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
       </a>
-      <a href="https://wa.me/917904833225?text=Hi%20Nila%20Herbals%2C%20I%27d%20like%20to%20know%20more%20about%20your%20products" class="btn-whatsapp-nav" target="_blank" rel="noopener">
+      <a href="#" data-nila="whatsapp" class="btn-whatsapp-nav" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20z"/></svg>
         Order on WhatsApp
       </a>
@@ -183,7 +183,7 @@
           </ul>
           <div class="product-footer">
             <span class="product-price">₹149<span class="size">100ml</span></span>
-            <a href="https://wa.me/917904833225?text=Hi%2C%20I%27d%20like%20to%20order%20Nila%20Herbal%20Hair%20Oil%20(100ml)" class="btn-small" target="_blank" rel="noopener">
+            <a href="#" data-nila="whatsapp" data-msg="Hi, I'd like to order Nila Herbal Hair Oil (100ml)" class="btn-small" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20z"/></svg>
               Order
             </a>
@@ -206,7 +206,7 @@
           </ul>
           <div class="product-footer">
             <span class="product-price">₹109<span class="size">100ml</span></span>
-            <a href="https://wa.me/917904833225?text=Hi%2C%20I%27d%20like%20to%20order%20Nila%20Curry%20Leaf%20Hair%20Oil%20(100ml)" class="btn-small" target="_blank" rel="noopener">
+            <a href="#" data-nila="whatsapp" data-msg="Hi, I'd like to order Nila Curry Leaf Hair Oil (100ml)" class="btn-small" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20z"/></svg>
               Order
             </a>
@@ -229,7 +229,7 @@
           </ul>
           <div class="product-footer">
             <span class="product-price">₹120<span class="size">100g</span></span>
-            <a href="https://wa.me/917904833225?text=Hi%2C%20I%27d%20like%20to%20order%20Nila%20Herbal%20Bathing%20Powder%20(100g)" class="btn-small" target="_blank" rel="noopener">
+            <a href="#" data-nila="whatsapp" data-msg="Hi, I'd like to order Nila Herbal Bathing Powder (100g)" class="btn-small" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20z"/></svg>
               Order
             </a>
@@ -289,23 +289,19 @@
   </div>
 </section>
 
-<!-- ============ INSTAGRAM STRIP ============ -->
+<!-- ============ RECENT TIPS / INSTAGRAM STRIP — pulls live from tips-data.json ============ -->
 <section class="instagram-strip">
   <div class="container">
     <div class="section-head">
       <span class="eyebrow">Follow Us</span>
-      <h2>@nilaherbals on Instagram</h2>
-      <p>Tag us in your Nila moments — we'd love to share your story.</p>
+      <h2><span data-nila="insta-text">@nila_herbal_care_official</span> on Instagram</h2>
+      <p>Daily hair & skin care tips — tag us in your Nila moments, we'd love to share your story.</p>
     </div>
-    <div class="insta-grid">
-      <div class="insta-thumb"><img src="assets/images/Hair_Oil.jpeg" alt="Nila Herbal Hair Oil"></div>
-      <div class="insta-thumb"><img src="assets/images/CurryLeaf_HairOil.jpeg" alt="Nila Curry Leaf Oil"></div>
-      <div class="insta-thumb"><img src="assets/images/Bathing_Care.jpeg" alt="Nila Bathing Powder"></div>
-      <div class="insta-thumb"><img src="assets/images/Hair_Oil.jpeg" alt="Nila Hair Care"></div>
-      <div class="insta-thumb"><img src="assets/images/CurryLeaf_HairOil.jpeg" alt="Nila Natural Herbs"></div>
+    <div class="insta-grid" id="insta-grid">
+      <!-- Cards injected by JS below, sourced from tips-data.json -->
     </div>
     <div style="text-align:center; margin-top: var(--space-md);">
-      <a href="https://instagram.com/nila_herbal_care_official" class="btn btn-outline" target="_blank" rel="noopener">Follow on Instagram</a>
+      <a href="#" data-nila="instagram" class="btn btn-outline" target="_blank" rel="noopener">Follow on Instagram</a>
     </div>
   </div>
 </section>
@@ -390,13 +386,16 @@
       <div class="footer-col">
         <a href="#" class="logo">Nila</a>
         <p>Traditional Ayurvedic-inspired hair and skin care, made with real herbs and no shortcuts.</p>
+        <p style="margin-top:0.6rem;">
+          <a href="#" data-nila="email" style="color: var(--gold-light); display:inline-flex; align-items:center; gap:0.4rem;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>
+            <span data-nila="email-text">nilaherbalofficial@gmail.com</span>
+          </a>
+        </p>
         <div class="footer-social">
-          <!-- REPLACE: change YOUR_INSTAGRAM_HANDLE to your actual Instagram username -->
-          <a href="https://instagram.com/nila_herbal_care_official" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
-          <!-- REPLACE: change YOUR_FACEBOOK_PAGE to your Facebook page name -->
-          <a href="https://facebook.com/YOUR_FACEBOOK_PAGE" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-          <!-- REPLACE: change 917904833225 to your WhatsApp number with country code, no + or spaces -->
-          <a href="https://wa.me/917904833225" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20z"/></svg></a>
+          <a href="#" data-nila="instagram" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+          <a href="#" data-nila="facebook" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" data-nila="whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20z"/></svg></a>
         </div>
       </div>
       <div class="footer-col">
@@ -423,7 +422,7 @@
           <li><a href="#">Track Order</a></li>
           <li><a href="#">Shipping Policy</a></li>
           <li><a href="#">Refund Policy</a></li>
-          <li><a href="#">Contact Us</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
         </ul>
       </div>
     </div>
@@ -434,11 +433,30 @@
   </div>
 </footer>
 
-<!-- WhatsApp floating button — REPLACE 917904833225 with your number -->
-<a href="https://wa.me/917904833225?text=Hi%20Nila%20Herbals%2C%20I%27d%20like%20to%20know%20more%20about%20your%20products" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+<!-- WhatsApp floating button — pulls number from config.js -->
+<a href="#" data-nila="whatsapp" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20z"/></svg>
 </a>
 
+<script src="assets/js/config.js"></script>
 <script src="assets/js/main.js"></script>
+<script>
+  // Populate homepage "Follow Us" strip with real tip images — single source
+  // of truth is tips-data.json, same file used on tips.html. Shows the 5
+  // most recent tips so this section is never fake/duplicated content.
+  fetch('tips-data.json')
+    .then(res => res.json())
+    .then(tips => {
+      const grid = document.getElementById('insta-grid');
+      if (!grid) return;
+      const recent = tips.slice(0, 5);
+      grid.innerHTML = recent.map(tip => `
+        <a href="tips.html" class="insta-thumb" title="${tip.day}: ${tip.heading}">
+          <img src="${tip.image}" alt="${tip.heading}" loading="lazy">
+        </a>
+      `).join('');
+    })
+    .catch(err => console.error('Could not load tips for homepage strip:', err));
+</script>
 </body>
 </html>
