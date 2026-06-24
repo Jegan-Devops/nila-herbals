@@ -1,5 +1,12 @@
 [
   {
+    "day": "Day 6",
+    "category": "hair",
+    "image": "assets/images/tips/day6.jpeg",
+    "heading": "Get Enough Sleep for Healthy Hair",
+    "text": "Getting enough sleep plays an important role in maintaining overall health, including the health of your scalp and hair. Aim for 7–8 hours of quality sleep each night, follow a consistent sleep schedule, and limit screen time before bedtime. Small healthy habits can contribute to healthier-looking hair over time."
+  },
+  {
     "day": "Day 5",
     "category": "hair",
     "image": "assets/images/tips/day5.jpeg",
@@ -15,14 +22,14 @@
   },
   {
     "day": "Day 3",
-    "category": "wellness",
+    "category": "hair",
     "image": "assets/images/tips/day3.jpeg",
     "heading": "Healthy hair begins with healthy nutrition",
     "text": "What you eat plays an important role in maintaining healthy hair. Include foods rich in protein, nuts & seeds, leafy greens, and fruits. A balanced diet, along with a consistent hair care routine, supports healthy-looking hair."
   },
   {
     "day": "Day 2",
-    "category": "wellness",
+    "category": "hair",
     "image": "assets/images/tips/day2.jpeg",
     "heading": "Hydration matters for healthy hair",
     "text": "Healthy hair starts from within. Drinking 2-3 litres of water every day helps support your overall health, including your scalp and hair. Pair good hydration with a consistent hair care routine for the best results."
